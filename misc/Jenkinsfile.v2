@@ -9,8 +9,8 @@ node {
      def myTestContainer = docker.image('node:16')
      myTestContainer.pull()
      myTestContainer.inside {
-       sh 'npm install --only=dev'
        sh 'chown -R $(id -u):$(id -g) ~/.npm'
+       sh 'npm install --only=dev'
        sh 'npm test'
      }
    }
@@ -19,8 +19,8 @@ node {
      def myTestContainer = docker.image('node:16')
      myTestContainer.pull()
      myTestContainer.inside("--link ${mysql.id}:mysql") { // using linking, mysql will be available at host: mysql, port: 3306
-          sh 'npm install --only=dev' 
           sh 'chown -R $(id -u):$(id -g) ~/.npm'
+          sh 'npm install --only=dev' 
           sh 'npm test'                     
      }                                   
      mysql.stop()
