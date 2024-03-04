@@ -8,7 +8,7 @@ node {
    stage('test') {
      def myTestContainer = docker.image('node')
      myTestContainer.pull()
-     myTestContainer.inside {
+     myTestContainer.inside('-u root') {
        sh 'pwd'
        sh 'npm install --only=dev --unsafe-perm'
        sh 'npm test'
