@@ -9,7 +9,7 @@ node {
      def myTestContainer = docker.image('node')
      myTestContainer.pull()
      myTestContainer.inside {
-       sh 'whoami'
+       sh 'pwd'
        sh 'npm install --only=dev'
        sh 'npm test'
      }
