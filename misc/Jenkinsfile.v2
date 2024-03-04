@@ -10,6 +10,7 @@ node {
      myTestContainer.pull()
      myTestContainer.inside {
        sh 'pwd'
+       sh 'getfacl .'
        sh 'npm install --only=dev'
        sh 'npm test'
      }
